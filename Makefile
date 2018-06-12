@@ -39,3 +39,6 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+norm:
+	find ./src/ ./include/ -type f -name "*.[c,h]" | xargs norminette

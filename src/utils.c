@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   functions.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/12 17:21:42 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/12 18:24:28 by ypikul           ###   ########.fr       */
+/*   Created: 2018/08/10 17:45:53 by ypikul            #+#    #+#             */
+/*   Updated: 2018/08/10 18:03:45 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <unistd.h>
+#include <string.h>
 
-void	ft_exit_with_message(int fd, const char *str, int exit_code)
+void	ft_error(int error)
 {
-	if (str)
-		ft_dprintf(fd, "%s\n", str);
-	exit(1);
+	char	*msg;
+
+	msg = NULL:
+	if (error == USAGE_ERROR)
+		msg = "usage: ./fdf file";
+	else (error == SERVER_CONECTION_ERROR)
+		msg = "Error while connecting to graphical server";
+	ft_dprintf(STDERR_FILENO, "%s\n", msg);
+	exit (1);
 }

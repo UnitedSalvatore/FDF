@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 18:01:26 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/12 19:19:34 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/08/10 17:54:45 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@
 
 static void	read_data(t_fdf *fdf, const int fd)
 {
-	char	*str;
-	char	**split;
+	char			*str;
+	char			**split;
 
-	if (ft_getline(fd, &str) < 0)
+	while (ft_getline(fd, &str) < 0)
 	{
 		if (!(split = ft_strsplit(str, ' ')))
-			
+			ft_exit_with_message(STDERR_FILENO, "Error while ft_strsplit");
 		ft_strdel(&str);
+
+		ft_splitdel(&split);
 	}
 }
 
